@@ -1,6 +1,31 @@
+0.2.1
+- spinoff version from cramm that workarond encodings problems in some devices
+- Change tempfile.mkdtemp() back to recursively delete from temp directory
+
+0.2.0
+- Make intermediate page optional. Thanks Juan Redondo and Adrián Suárez.
+
+0.1.0
+- Start using minor version component so we can use micro component for
+  pre-releases.
+- Make sure the userdata/addon_data/s.s.s/ dir exists when handling tempdirs
+  even when the user hasn't touched our setting. Thanks Adrián Suárez
+  (upadrian)
+- More robust final download link RE-based extraction.
+- Handle .srt filenames with unicode chars more robustly.
+- Make rating actually helpful by reflecting relative download count.
+- Cleanup uploader comment for the subtitle.
+
 0.0.8
-- Fix Delete Temp directory encoding
-- Fix Download sub because somo change in the subdix page 
+- Handle new page added by subdivx.com. Thanks github users @upadrian,
+  @gboado and @felexx90
+- Simplify handling of temporary directory used to download & uncompress
+  subtitle files by skipping the 'remove it recursively and re-create' stage
+  which caused problems with mixed/unknown encodings, Unicode text passed in
+  by Kodi or read from the FS when calling shutil.rmtree().
+  Instead, use Python's tempfile.mkdtemp() and don't remove tempdirs.
+- Toggle default value of setting 'Show uploader name in place of language'
+  added in v0.0.5 to be ON.
 
 0.0.7
 - Remove code added for 0.0.5 which isn't needed, had been added to workarond
